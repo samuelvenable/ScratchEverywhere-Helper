@@ -1,6 +1,14 @@
 #!/bin/sh
-cd "${0%/*}/../"
+cd "${0%/*}"
 # Some platforms do not accept the -o flag for uname; any warnings printed to the terminal concerning this can be safely ignored...
+mkdir "CLI";
+if [ `uname -o` = "Msys" ]; then
+  git clone "https://github.com/samuelvenable/SDL3-ImGui-FileDialogs" "CLI/ImFileDialog";
+else
+  git clone "https://github.com/samuelvenable/SDL2-ImGui-FileDialogs" "CLI/ImFileDialog";
+fi;
+git clone "https://github.com/ScratchEverywhere/ScratchEverywhere" "CLI/ScratchEverywhere";
+cd "CLI/ImFileDialog" && make && cd ../.. && cd "CLI/ScratchEverywhere" && cmake . && make && cd ../..;
 if [ `uname -o` = "Msys" ]; then
   g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc.exe -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -static -lntdll -lshell32 -lole32 -luuid -Wl,--subsystem,console; ./xproc.exe;
 elif [ `uname` = "Darwin" ]; then
