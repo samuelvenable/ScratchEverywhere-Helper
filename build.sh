@@ -1,7 +1,6 @@
 #!/bin/sh
-cd "${0%/*}";
 # Some platforms do not accept the -o flag for uname; any warnings printed to the terminal concerning this can be safely ignored...
-mkdir "CLI";
+cd "${0%/*}" && mkdir "CLI";
 if [ `uname -o` = "Msys" ]; then
   git clone "https://github.com/samuelvenable/SDL3-ImGui-FileDialogs" "CLI/ImFileDialog";
 else
