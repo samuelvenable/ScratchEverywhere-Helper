@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
     ngs::ps::free_stdin_for_child_proc_id(proc_id);
   }
   if (!scratch_game.empty()) {
-    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id(ngs::fs::executable_get_directory() + "CLI/ScratchEverywhere/scratch-everywhere-pc \"" + scratch_game + "\"", true);
+    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id(ngs::fs::executable_get_directory() + "CLI/ScratchEverywhere/scratch-pc \"" + scratch_game + "\"", true);
     ngs::ps::free_stdout_for_child_proc_id(proc_id);
     ngs::ps::free_stdin_for_child_proc_id(proc_id);
   }
