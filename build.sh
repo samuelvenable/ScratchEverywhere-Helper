@@ -9,27 +9,27 @@ fi;
 git clone "https://github.com/ScratchEverywhere/ScratchEverywhere" "CLI/ScratchEverywhere";
 cd "CLI/ImFileDialog" && make && cd ../.. && cd "CLI/ScratchEverywhere" && cmake . && make && cd ../..;
 if [ `uname -o` = "Msys" ]; then
-  g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc.exe -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -static -lntdll -lshell32 -lole32 -luuid -Wl,--subsystem,console; ./xproc.exe;
+  g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere.exe -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -static -lntdll -lshell32 -lole32 -luuid -Wl,--subsystem,console; ./ScratchEverywhere.exe;
 elif [ `uname` = "Darwin" ]; then
-  clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -mmacos-version-min=10.13 -arch arm64 -arch x86_64; ./xproc;
+  clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -mmacos-version-min=10.13 -arch arm64 -arch x86_64; ./ScratchEverywhere;
 elif [ `uname -o` = "GNU/Linux" ]; then
   if [ -f "/bin/g++" ]; then
-    g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -lpthread -static; ./xproc;
+    g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -lpthread -static; ./ScratchEverywhere;
   else
-    clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -lpthread; ./xproc;
+    clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -lpthread; ./ScratchEverywhere;
   fi;
 elif [ `uname` = "FreeBSD" ]; then
-  clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -lelf -lkvm -lpthread -static; ./xproc;
+  clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -lelf -lkvm -lpthread -static; ./ScratchEverywhere;
 elif [ `uname` = "DragonFly" ]; then
-  g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -lkvm -lpthread -static; ./xproc;
+  g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -lkvm -lpthread -static; ./ScratchEverywhere;
 elif [ `uname` = "NetBSD" ]; then
-  g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -lkvm -lpthread -static; ./xproc;
+  g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -lkvm -lpthread -static; ./ScratchEverywhere;
 elif [ `uname` = "OpenBSD" ]; then
-  clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -lkvm -lpthread -static; ./xproc;
+  clang++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -lkvm -lpthread -static; ./ScratchEverywhere;
 elif [ `uname` = "SunOS" ]; then
   if [ `uname -o` = "illumos" ]; then
-    g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -D__illumos__ -Wall -static-libgcc -lkvm -lproc -lpthread; ./xproc;
+    g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -D__illumos__ -Wall -static-libgcc -lkvm -lproc -lpthread; ./ScratchEverywhere;
   else
-    g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o xproc -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -lkvm -lproc -lpthread; ./xproc;
+    g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -lkvm -lproc -lpthread; ./ScratchEverywhere;
   fi;
 fi;
