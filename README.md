@@ -1,6 +1,6 @@
 # Scratch Everywhere! (File Selection Helper)
 
-**File Selection Made Easy in Scratch Everywhere!**
+**File Selection Made Easy in Scratch Everywhere! for Desktop Platforms**
 
 Adds file selection dialog on startup to SE! for opening a scratch game.
 
