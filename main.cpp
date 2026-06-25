@@ -66,9 +66,9 @@ int main(int argc, char **argv) {
     ngs::fs::environment_set_variable("IMGUI_POPS_COLOR_2", std::to_string(0.07));
     ngs::fs::environment_set_variable("IMGUI_FONT_SIZE", std::to_string(20));
     #if (defined(_WIN32) || defined(_WIN64))
-    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id(ngs::fs::executable_get_directory() + "CLI\\SDL3-ImGui-FileDialogs\\filedialogs\\filedialogs.exe --get-open-filename-ext \"Scratch Game Files (*.sb3)|*.sb3\" \"\" \"\" \"Select a Scratch *.sb3 Game File to play...\"", true);
+    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id("\"" + ngs::fs::executable_get_directory() + "CLI\\SDL3-ImGui-FileDialogs\\filedialogs\\filedialogs.exe\" --get-open-filename-ext \"Scratch Game Files (*.sb3)|*.sb3\" \"\" \"\" \"Select a Scratch *.sb3 Game File to play...\"", true);
     #else
-    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id(ngs::fs::executable_get_directory() + "CLI/SDL2-ImGui-FileDialogs/filedialogs/filedialogs --get-open-filename-ext \"Scratch Game Files (*.sb3)|*.sb3\" \"\" \"\" \"Select a Scratch *.sb3 Game File to play...\"", true);
+    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id("\"" + ngs::fs::executable_get_directory() + "CLI/SDL2-ImGui-FileDialogs/filedialogs/filedialogs\" --get-open-filename-ext \"Scratch Game Files (*.sb3)|*.sb3\" \"\" \"\" \"Select a Scratch *.sb3 Game File to play...\"", true);
     #endif 
     scratch_game = ngs::ps::read_from_stdout_for_child_proc_id(proc_id);
     while (!scratch_game.empty() && (scratch_game.back() == '\n' || scratch_game.back() == '\r')) {
@@ -78,7 +78,11 @@ int main(int argc, char **argv) {
     ngs::ps::free_stdin_for_child_proc_id(proc_id);
   }
   if (!scratch_game.empty()) {
-    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id(ngs::fs::executable_get_directory() + "CLI/ScratchEverywhere/scratch-pc \"" + scratch_game + "\"", true);
+    #if (defined(_WIN32) || defined(_WIN64))
+    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id("\"" + ngs::fs::executable_get_directory() + "CLI\\ScratchEverywhere\\scratch-pc.exe\" \"" + scratch_game + "\"", true);
+    #else
+    ngs::ps::ngs_proc_id_t proc_id = ngs::ps::spawn_child_proc_id("\"" + ngs::fs::executable_get_directory() + "CLI/ScratchEverywhere/scratch-pc\" \"" + scratch_game + "\"", true);
+    #endif
     ngs::ps::free_stdout_for_child_proc_id(proc_id);
     ngs::ps::free_stdin_for_child_proc_id(proc_id);
   }
