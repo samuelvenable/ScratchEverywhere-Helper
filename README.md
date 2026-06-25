@@ -22,3 +22,5 @@ Windows is the only platform currently which uses SDL3 instead of SDL2, (don't a
 - OpenBSD: git, clang++, make, sdl2, x11, gtk+3.0, gio2.0, glib2.0, pkg-config, cmake, SE! dependencies
 - Solaris: git, g++, make, sdl2, x11, gtk+3.0, gio2.0, glib2.0, pkg-config, cmake, SE! dependencies
 - illumos: git, g++, make, sdl2, x11, gtk+3.0, gio2.0, glib2.0, pkg-config, cmake, SE! dependencies
+
+![screenshot.png](screenshot.png)
