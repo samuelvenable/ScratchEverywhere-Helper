@@ -1,9 +1,9 @@
 #!/bin/sh
 # Some platforms do not accept the -o flag for uname; any warnings printed to the terminal concerning this can be safely ignored...
 cd "${0%/*}" && mkdir "CLI";
-git clone "https://github.com/samuelvenable/SDL2-ImGui-FileDialogs" "CLI/ImFileDialog";
+git clone "https://github.com/samuelvenable/SDL2-ImGui-FileDialogs" "CLI/SDL2-ImGui-FileDialogs";
 git clone "https://github.com/ScratchEverywhere/ScratchEverywhere" "CLI/ScratchEverywhere";
-cd "CLI/ImFileDialog" && make && cd ../.. && cd "CLI/ScratchEverywhere" && cmake . && make && cd ../..;
+cd "CLI/SDL2-ImGui-FileDialogs" && make && cd ../.. && cd "CLI/ScratchEverywhere" && cmake . && make && cd ../..;
 if [ `uname -o` = "Msys" ]; then
   g++ main.cpp apifilesystem/filesystem.cpp apiprocess/process.cpp -o ScratchEverywhere.exe -I. -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -static -lntdll -lshell32 -lole32 -luuid -Wl,--subsystem,console; ./ScratchEverywhere.exe;
 elif [ `uname` = "Darwin" ]; then
