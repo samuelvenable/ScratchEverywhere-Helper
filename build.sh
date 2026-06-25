@@ -4,13 +4,13 @@
 cd "${0%/*}" && mkdir "CLI";
 if [ `uname -o` = "Msys" ]; then
   git clone "https://github.com/samuelvenable/SDL3-ImGui-FileDialogs" "CLI/SDL3-ImGui-FileDialogs";
-  cd "CLI/SDL3-ImGui-FileDialogs" && make && cd ../..;
+  cd "CLI/SDL3-ImGui-FileDialogs" && make && cd "../..";
 else
   git clone "https://github.com/samuelvenable/SDL2-ImGui-FileDialogs" "CLI/SDL2-ImGui-FileDialogs";
-  cd "CLI/SDL2-ImGui-FileDialogs" && make && cd ../..;
+  cd "CLI/SDL2-ImGui-FileDialogs" && make && cd "../..";
 fi;
 git clone "https://github.com/ScratchEverywhere/ScratchEverywhere" "CLI/ScratchEverywhere";
-cd "CLI/ScratchEverywhere" && cmake . && make && cd ../..;
+cd "CLI/ScratchEverywhere" && cmake . && make && cd "../..";
 if [ `uname -o` = "Msys" ]; then
   g++ "main.cpp" "apifilesystem/filesystem.cpp" "apiprocess/process.cpp" -o "ScratchEverywhere.exe" -I"." -std=c++17 -DNULLIFY_STDERR -Wall -static-libgcc -static-libstdc++ -static -lntdll -lshell32 -lole32 -luuid -Wl,--subsystem,console; "./ScratchEverywhere.exe";
 elif [ `uname` = "Darwin" ]; then
