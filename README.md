@@ -10,6 +10,8 @@ Supports Windows, macOS, GNU/Linux, FreeBSD, DragonFly BSD, NetBSD, OpenBSD, Sol
 
 Windows is the only platform currently which uses SDL3 instead of SDL2, (don't ask why I did that).
 
+`cd` to the cloned repository and run `make` or run the `build.sh` bourne shell script manually.
+
 **Build Dependencies:**
 - Windows: git, MSYS2, MinGW, pacman, g++, make, pkg-config, sdl3, SE! dependencies
 - macOS: git, Xcode command line tools, MacPorts, clang++, make, sdl2, SE! dependencies
